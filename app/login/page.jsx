@@ -46,15 +46,7 @@ const LoginPage = () => {
       email,
       password,
     });
-    router.refresh();
-    setEmail("");
-    setPassword("");
-  };
-
-  const onLogout = async () => {
-    await supabase.auth.signOut();
-    router.refresh();
-    setUser(null);
+    router.replace("/");
   };
 
   console.log({ loading, user });
@@ -64,12 +56,7 @@ const LoginPage = () => {
   }
 
   if (user) {
-    return (
-      <div>
-        <h1>Logged In!</h1>
-        <button onClick={onLogout}>Log Out</button>
-      </div>
-    );
+    router.push("/");
   }
 
   return (
